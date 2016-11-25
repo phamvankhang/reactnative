@@ -28,7 +28,7 @@ export default class MapMyRide extends Component {
 
                 region={this.state.region}
             />
-            <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={(text) => this.setState({text})} value={this.state.text} />
+            // <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={(text) => this.setState({text})} value={this.state.text} />
         );
     }
 }
