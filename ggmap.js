@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {MapView, TextInput} from 'react-native';
+import {MapView, TextInput, View} from 'react-native';
 import css from './style'
 export default class MapMyRide extends Component {
     constructor() {
@@ -21,14 +21,21 @@ export default class MapMyRide extends Component {
         }
     }
 
+    changeRegion(data) {
+
+    }
+
     render() {
         return (
-            <MapView
-                style={css.map}
+            <View style={{flex: 1}}>
+                <MapView
+                    style={css.map}
 
-                region={this.state.region}
-            />
-            // <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1}} onChangeText={(text) => this.setState({text})} value={this.state.text} />
+                    region={this.state.region}
+                />
+                <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1, bottom: 50}}
+                           onChangeText={ (text) => this.setState({text})} value={this.state.text}/>
+            </View>
         );
     }
 }
