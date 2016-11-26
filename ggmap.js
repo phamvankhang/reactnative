@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
+import _ from 'underscore'
 import {MapView, TextInput, View} from 'react-native';
 import css from './style'
 export default class MapMyRide extends Component {
     constructor() {
         super()
         this.state = {
-            showsUserLocation: true,
-            followsUserLocation: true,
             zoomEnabled: true,
             showsScale: true,
             provider: 'google',
@@ -22,7 +21,15 @@ export default class MapMyRide extends Component {
     }
 
     changeRegion(data) {
-
+        console.log(data)
+        var results = data.split(' ')
+        var region= {
+                longitude: parseFloat(results[0]),
+                latitude: parseFloat(results[1]),
+                latitudeDelta: parseFloat(results[2]),
+                longitudeDelta: parseFloat(results[3]),
+            }
+            this.setState({region: region})
     }
 
     render() {
@@ -34,7 +41,7 @@ export default class MapMyRide extends Component {
                     region={this.state.region}
                 />
                 <TextInput style={{height: 40, borderColor: 'gray', borderWidth: 1, bottom: 50}}
-                           onChangeText={ (text) => this.setState({text})} value={this.state.text}/>
+                           onChangeText={ (text) => this.changeRegion(text)} value={_.values(this.state.region).join(' ')}/>
             </View>
         );
     }
